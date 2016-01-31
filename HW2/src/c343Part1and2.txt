@@ -1,0 +1,8 @@
+a)omega(1)
+b)omega(n)
+c)omega(n^2)
+d)omega(nlogn)
+e)omega(n^(3/2))
+f)omega(n^(3/2))
+g)omega(n^3(logn))
+h)omega(1)

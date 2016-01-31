@@ -1,8 +1,17 @@
-a)omega(1)
-b)omega(n)
-c)omega(n^2)
-d)omega(nlogn)
-e)omega(n^(3/2))
-f)omega(n^(3/2))
-g)omega(n^3(logn))
-h)omega(1)
+1.
+a)Θ(1)
+b)Θ(n)
+c)Θ(n^2)
+d)Θ(n^2)
+e)Θ(nlogn)
+f)Θ(nlogn)
+g)Θ(n^4(logn))
+h)Θ(n^2)
+
+2.
+elemnts - how many elemnts there are
+empty - True if it is empty
+delete - delete item at specific spot
+initialize - reset to empty 
+insertValue - insert a value at the specified position
+insert - inserts a row at the specified position

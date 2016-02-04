@@ -16,6 +16,7 @@ public class BinNodeJr <E extends Comparable<?super E>>{
       right = node;
   }
   
+  
   public boolean find(E num) {
 	  int answer = 1;
 	  if (this.left != null){answer *= num.compareTo(this.left.value);}

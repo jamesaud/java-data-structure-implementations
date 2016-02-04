@@ -1,0 +1,17 @@
+1.
+a)Θ(1)
+b)Θ(n)
+c)Θ(n^2)
+d)Θ(n^2)
+e)Θ(nlogn)
+f)Θ(nlogn)
+g)Θ(n^4(logn))
+h)Θ(n^2)
+
+2.
+elemnts - how many elemnts there are
+empty - True if it is empty
+delete - delete item at specific spot
+initialize - reset to empty 
+insertValue - insert a value at the specified position
+insert - inserts a row at the specified position

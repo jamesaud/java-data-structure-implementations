@@ -26,7 +26,6 @@ public class BinNodeJr <E extends Comparable<?super E>>{
 	  else return false;
   }
 
-
   public static void main(String[] argv) {
       BinNodeJr<Integer> root = new BinNodeJr<Integer>(10);
       BinNodeJr<Integer> node1 = new BinNodeJr<Integer>(30);

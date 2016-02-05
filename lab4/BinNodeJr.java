@@ -1,4 +1,3 @@
-package lab4;
 
 //a simple class for binary tree (mini-assignment)
 public class BinNodeJr <E extends Comparable<?super E>>{ 
@@ -19,8 +18,10 @@ public class BinNodeJr <E extends Comparable<?super E>>{
   
   public boolean find(E num) {
 	  int answer = 1;
-	  if (this.left != null){answer *= num.compareTo(this.left.value);}
-	  if (this.right != null){answer *= num.compareTo(this.right.value);}
+	  if (this.left != null){answer *= 
+num.compareTo(this.left.value);}
+	  if (this.right != null){answer *= 
+num.compareTo(this.right.value);}
 	  answer *= num.compareTo(this.value);
 	  if (answer == 0) return true;
 	  else return false;

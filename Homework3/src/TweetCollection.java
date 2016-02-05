@@ -37,6 +37,7 @@ public class TweetCollection {
 		
 	}
 	
+	
 	public tweets convert_tweet(String line){
 		String creator = "";
 		String content = "";

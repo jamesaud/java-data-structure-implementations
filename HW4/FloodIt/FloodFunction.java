@@ -43,16 +43,13 @@ public class FloodFunction {
     public void flood(int colorToFlood) {
       for (int i = 0; i < floodList.size(); i++){
         Coord curr = floodList.get(i);
-        //test if block exists in every direction
-        //if block exists: check if color is the same as current and add to list, else do nothing
+        //get the surrounding blocks
         Coord d = down(curr);
         Coord l = left(curr);
         Coord r = right(curr);
         Coord u = up(curr);
-         
-        //System.out.println("\nLoop" + i + ":\n");
-        //System.out.println(curr);
         
+        //call the change_color function, which determines if the blocks should be changed and adds it to the floodList
         change_color(curr, l); 
         change_color(curr, u);
         change_color(curr, r); 

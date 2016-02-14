@@ -1,0 +1,27 @@
+3.3) 2, n^(2/3), 20n, log3n, log2n, 3n^2, 3^n
+
+3.8)	n0 = 1 for all 
+
+	a) Ω(n) O(n)    	c = c1
+	b) Ω(n^3) O(n^3)	c = c2
+	c) Ω(nlogn) O(nlogn)	c = c4
+
+4.1)  	assume that it is called "list":
+
+	list.moveToStart();
+	list.next().next();
+	list.remove()
+
+4.11)   n(number of elements) P(size of pointer of storage unit) E(size of 
+data element in storage units) D(maxiumum number of list elements that can 
+be stored in array)
+	Breakpoint at: n=DE/(P+E)
+
+	a)n = 20(8)/(4 + 8)   Breakpoint: n = 13.333 LinkedList more 
+efficient at n <= 13     
+	b)n = 30(2)/(4 + 2)   Breakpoint: n = 10     LinkedList more 
+efficient at n < 10
+	c)n = 30(1)/(1 + 4)   Breakpoint: n = 6	     LinkedList more 
+efficient at n < 6
+	d)n = 40(32)/(4 + 32) Breakpoint: n = 35.556 LinkedList more 
+efficient at n <= 35

@@ -1,10 +1,14 @@
+
 public class CountingSort {
 	public static void main(String[] args){
 		CountingSort cs = new CountingSort();
 		int[] arr = new int[]{4, 5, 2, 1, 0};
 		int[] sorted = cs.countSort(arr, 5);
-		System.out.println("Initial:" + arr);
-		System.out.println("Sorted:" + sorted);
+		System.out.println("Initial:");
+		for (int i:arr){System.out.print(i);}
+		System.out.println();
+		System.out.println("Sorted:");
+		for (int i:sorted){System.out.print(i);}
 		
 	}	
 	

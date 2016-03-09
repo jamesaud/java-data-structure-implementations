@@ -1,0 +1,18 @@
+1.  a)  ϴ(1) - the maxiumum value in a sorted list will either be the first value in the list or the last
+    b)  ϴ(1) - the maxiumum value in a sorted list will either be the first value in the list or the last
+    c)  ϴ(n) - run through the list and add all the values ϴ(n) and then divide by the length of the list (constant time or n time, depending on if we have a length/size attribute)
+    d)  ϴ(n) or ϴ(1) - if the list's length is known, then we can find the median value lienarly by going to the middle index (or middle 2 indexes and finding the middle) ϴ(1).
+		       if the list's length is unknown, it will take ϴ(n) time to count through the list to find the length
+    e)  ϴ(n) - Count through the list once, ϴ(n), while storing the counts of the values and return the most appearing number. 
+
+2.	Huff Tree			Originial encoding size:		 Huffman encoding size:
+        [100%]				(50*2) + (35*2) + (10*2) + (5*2)=200	 (50*1)+(35*2)+(10*3)+(5*3)=165
+	/   \					
+       /     \				Compression Ratio: 200/165 = 1.2121 
+      A (50%) [50%]
+	     /  \
+	    /    \
+	   T(35%) [15%]
+		 /  \
+	        /    \
+	       C(10%) G(5%)

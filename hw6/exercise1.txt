@@ -1,0 +1,10 @@
+(1) A linked-list maintained in sorted order.
+(2) A linked-list of unsorted records.
+(3) A binary search tree.
+(4) An array-based list maintained in sorted order.
+(5) An array-based list of unsorted records.
+
+a) 5 - Just insert in the order (array[1000]) that you get records and it will guarenteed to be sorted (with the given that the next key value will always be greater than the previous)
+b) 3 - A BST will allow us to search through a large number of records much faster than a list 
+c) 4 - If we sort the list, than the searches will be much easier
+d) 4 - There is a magnitude greater searches than insertions, so sorting the insertions will make searching easier. 

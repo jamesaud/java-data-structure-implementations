@@ -1,0 +1,10 @@
+public class DNADist{
+	public static void main(String[] args){
+	//stuff goes here
+	}
+
+	public int Hamming(String DNA1, String DNA2){
+		
+	}
+
+}

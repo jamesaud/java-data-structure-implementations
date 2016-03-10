@@ -1,0 +1,6 @@
+If m<n, then counting sort will run in linear time because it is bigO(n+m).
+
+However, is m is much greater then n, say on the scale of m=bigO(n^3), our time complexity will be in terms of m's relationship to n (in this case bigO(n^3) time complexity). 
+Therefore, with much larger values of m than n, it could be more efficient to sort with another algorithm.
+
+

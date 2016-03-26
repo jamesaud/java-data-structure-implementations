@@ -1,0 +1,37 @@
+1. 9.10
+Value[] list;
+
+public void Transpose(Value value){
+	//go through list
+	for (int i=0; i<length; i++){
+		//if the list item matches the value we are searching for
+		if (list[i] == value){
+		    //if it is at the front of the list, do nothing
+	            if (i==0){break;}
+		    //otherwise, move it forward in the list by swapping
+		    Value temp = list[i-1];
+		    list[i-1] = list[i];
+		    list[i] = temp;	
+		}
+		//if it does not exist in the list, add it to the end
+		else {arr[list.length]=value;}
+	}
+}
+
+2. 9.13
+	a) Well, it might work correctly. because k/n is producing floating point values, the calculation is just an approximation. 
+		Checking if a value is equivalent to this type of hash would require a range of closeness. 
+		If the hash just was int division, it would end up colliding hashes on whole numbers often.
+	b) No, it would only work for one element.
+	c) Yes it would work, but it would be bad because it is likely to generate the same hash. Example, 4 + 2 and 5 + 1 fit the rule and generate the same hash.
+	d) Yes it would work, and it is good because modding by a prime number minimilizes the amount of collisions between hashes.
+
+3. 9.14
+
+0  |  1/7 ctbf (chance to be filled)
+1  |  1/7 ctbf
+2  |  -> 9 -> 2
+3  |  -> 3
+4  |  1/7 ctbf
+5  |  -> 12
+6  |  1/7 ctbf

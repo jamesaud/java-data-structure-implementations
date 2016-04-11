@@ -1,20 +1,21 @@
 //a simple implementation of Graph using adjacency list
 //C343 2014
-import java.util.HashMap;
-import java.util.List;
+
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.Vector;
+import java.util.Scanner;
+import java.util.List;
 
 public class AdjGraph implements Graph {
 	private boolean digraph;
 	private int totalNode;
 	private Vector<String> nodeList;
 	private int totalEdge;
-	public Vector<LinkedList<Integer>>  adjList; //Adjacency list
+	private Vector<LinkedList<Integer>>  adjList; //Adjacency list
 	private Vector<Boolean> visited;
 	private Vector<Integer> nodeEnum; //list of nodes pre visit
-	private int totalVisited;
+	private int[][] weights = new int[7][7];
 	
 	public AdjGraph() {
 		init();
@@ -30,7 +31,6 @@ public class AdjGraph implements Graph {
 		nodeEnum = new Vector<Integer>();
 		totalNode = totalEdge = 0;
 		digraph = false;
-		totalVisited=0;
 	}
 	//set vertices
 	public void setVertex(String[] nodes) {
@@ -71,9 +71,22 @@ public class AdjGraph implements Graph {
 		if((getNode(v1) != -1) && (getNode(v2) != -1)) {
 			//add edge from v1 to v2
 			setEdge(getNode(v1), getNode(v2), weight);
+			setEdge(getNode(v2), getNode(v1), weight);
 			//for digraph, add edge from v2 to v1 as well
-			if(digraph == false) setEdge(getNode(v2), getNode(v1), weight);
+			if(digraph == false) {
+				setEdge(getNode(v2), getNode(v1), weight);
+				setEdge(getNode(v1), getNode(v2), weight);
+			}
+			setWeight(v1, v2, weight);
+			setWeight(v2, v1, weight);
 		}
+		
+	}
+	
+	public void setWeight(String v1, String v2, int weight){
+		int index_v1 = getNode(v1);
+		int index_v2 = getNode(v2);
+		weights[index_v1][index_v2] = weight;
 	}
 
 	//it is important to keep track if a vertex is visited or not (for traversal)
@@ -105,37 +118,12 @@ public class AdjGraph implements Graph {
 		System.out.println(method + ":");
 		displayEnum();
 	}
-	
-	public void walk2(){
-		clearWalk();
-		int totalComponents = 0;
-		for(int i=0; i<nodeList.size(); i++){
-			if (ifVisited(i)==false){
-				DFS(i);
-				String node = nodeList.get(i);
-				System.out.print("Component: " + node);
-				System.out.print("  contains # of nodes: " + this.totalVisited);
-				System.out.println(" ");
-				totalVisited=0;
-				totalComponents++;
-		}
-		}
-		System.out.println("Total Components:" + totalComponents);
-		//count
-		//for node in allnodes
-		//check if marked, if not called DFS
-		//if it is marked 
-	}
-	
-	
 	public void DFS(int v) {
-		totalVisited++;
 		setVisited(v);
 		LinkedList<Integer> neighbors = adjList.elementAt(v);
 		for(int i = 0; i < neighbors.size(); i ++) {
 			int v1 = neighbors.get(i);
-			if(ifVisited(v1) == false){
-				DFS(v1); }
+			if(ifVisited(v1) == false) DFS(v1); 
 		}
 	}
 	public void BFS(int s) {
@@ -165,84 +153,81 @@ public class AdjGraph implements Graph {
 	}
 	
 	public void myFloyd(){
-		//for Each node, we have a list of shortest paths to the rest of the nodes
-		int[][] Paths = new int[nodeList.size()][nodeList.size()];
-		//sets the relationship with itself to 0, others to BigNum
-		for (int i=0; i < nodeList.size(); i++){
-			//System.out.println(adjList.get(i));
-			for (int j=0;j<nodeList.size();j++){
-				Paths[i][j] = 9;
-			}
-			Paths[i][i] = 0;
-		}
-		
-		for (int i=0; i<adjList.size();i++){
-			LinkedList<Integer> NodeRelations = adjList.elementAt(i);
-			System.out.print("Node " + i + " relates to |" );
-			for (int j=0;j<NodeRelations.size();j++){
-				int node_relation = NodeRelations.get(j);
-				System.out.println(" " + node_relation);
-				Paths[i][node_relation] = 1;
-			}
-			System.out.println();
-		}
-		
-		for (int i=0; i<adjList.size();i++){
-			LinkedList<Integer> NodeRelations;
-			LinkedList<Integer> Queue = new LinkedList<Integer>();
-			
-			Queue.addFirst(i);
-			int current_node;
-			
-			
-			while(Queue.size()>0){
-				//System.out.println(Queue);
-				current_node =  Queue.removeFirst();
-				NodeRelations = adjList.elementAt(current_node);
-				
-				for (int j=0; j<NodeRelations.size();j++){
-					int related_node = NodeRelations.get(j);
-					Queue.addFirst(related_node);
-					if (Paths[i][related_node] > Paths[i][current_node] + Paths[current_node][related_node]){
-						Paths[i][related_node] = Paths[i][current_node] + Paths[current_node][related_node];
-					}
-					//System.out.print("Relation to " + related_node + "|");
-				}
-			}}
-	
-		
-		//Prints off paths in a Matrix format
-		int count=0;
-		System.out.println("  0123456");
-		for (int[] list: Paths){
-			System.out.print(count +"|");
-			count++;
-			for (int i: list){
-			System.out.print(i);
-			}
-			System.out.println();
-		}
-	}
+	   int n = totalNode;
+	   int[][] ans = new int[n][n];
+	   
+	   for(int i=0; i<n; i++)
+		   for(int j = 0; j<ans[0].length; j++){
+			   	if(i == j) {
+		       ans[i][j] = 0;
+		     } 
+			   	else if ( adjList.get(i).contains(j)){
+			   		ans[i][j] = weights[i][j];
+			   		ans[j][i] = weights[j][i];
+		     }
+			    else {
+			       ans[i][j] = Integer.MAX_VALUE;
+			     }
+		   }
+	   
+		   for (int k=0; k<n; k++) {
+		     for (int i=0; i<n; i++) {
+		       for (int j=0; j<n; j++) {
+		         if (ans[i][k] != Integer.MAX_VALUE && ans[k][j] != Integer.MAX_VALUE && ans[i][j]>ans[i][k]+ans[k][j]){
+		           ans[i][j] = ans[i][k]+ans[k][j];
+		         }
+		       }
+		     }
+		   }
+		   
+		   int max_path = 0;
+		   for (int i=0; i< ans.length; i++){
+			   int[] distances = ans[i];
+			   System.out.print("Node " + i + "| ");
+			   for (int j=0; j<distances.length;j++){
+				   if (distances[j]>max_path){max_path = distances[j];}
+				   if (distances[j] == Integer.MAX_VALUE){System.out.print("i");}
+				   else System.out.print(distances[j] + "   ");
+			   }
+			   System.out.println();
+		   }
+		   System.out.println("\nMAX PATH = " + max_path);
+		   
+	 }
 	
 	public static void main(String[] args){
-		AdjGraph ag = new AdjGraph(true);
-		String[] nodes = {"a","b","c","d","e","f","g"};
-		ag.setVertex(nodes);
-		ag.setEdge("a", "b", 1);
-		ag.setEdge("a", "d", 1);
-		//ag.setEdge("a", "a", 1);
-		//ag.setEdge("a", "b", 1);
-		ag.setEdge("b", "f", 1);
-		ag.setEdge("c", "d", 1);
-		ag.setEdge("e", "f", 1);
-		//ag.setEdge("d", "a", 1);
-		//ag.setEdge("d", "b", 1);
-		//ag.setEdge("e", "f", 1);
-	//	ag.setEdge("f", "a", 1);
-		//ag.setEdge("g", "g", 1);
-		ag.display();
-		System.out.println(ag.adjList);
-		ag.myFloyd();
+		Scanner sc = new Scanner(System.in);
+		System.out.print("Enter Number of Vertexes and Edges: ");
+		String firstLine = sc.nextLine();
+		String[] split_first = firstLine.split(" ");
+		int num_edge = Integer.parseInt(split_first[1]);
+		int num_vertex = Integer.parseInt(split_first[0]);
+		System.out.print("Enter vertexes and edges: \nExample: 1 6 13 E\n");
 		
+		List<String[]> information = new ArrayList<String[]>();
+		for (int i=0; i<num_edge;i++){
+			System.out.print(">");
+			String line = sc.nextLine();
+			String[] split = line.split(" ");
+			information.add(split);
+		}
+		
+		String[] all_nodes = new String[num_vertex];
+		for (int i=0; i<num_vertex; i++){
+			all_nodes[i] = Integer.toString(i+1);
+		}
+		
+		AdjGraph ag = new AdjGraph(true);
+		ag.setVertex(all_nodes);
+		
+		for (int i=0; i<information.size();i++){
+			String[] info = information.get(i);
+			String v1 = info[0];
+			String v2 = info[1];
+			int weight = Integer.parseInt(info[2]);
+			ag.setEdge(v1, v2, weight);
+		}
+		ag.myFloyd();
 	}
+	
 }

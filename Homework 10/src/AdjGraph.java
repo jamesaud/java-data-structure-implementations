@@ -15,11 +15,16 @@ public class AdjGraph implements Graph {
 	private Vector<LinkedList<Integer>>  adjList; //Adjacency list
 	private Vector<Boolean> visited;
 	private Vector<Integer> nodeEnum; //list of nodes pre visit
-	private int[][] weights = new int[7][7];
+	private int[][] weights;
 	
 	public AdjGraph() {
 		init();
 	}
+	
+	public void setWeights(int[][] weights){
+		this.weights = weights;
+	}
+	
 	public AdjGraph(boolean ifdigraph) {
 		init();
 		digraph =ifdigraph;
@@ -217,8 +222,11 @@ public class AdjGraph implements Graph {
 			all_nodes[i] = Integer.toString(i+1);
 		}
 		
-		AdjGraph ag = new AdjGraph(true);
+		AdjGraph ag = new AdjGraph();
 		ag.setVertex(all_nodes);
+		
+		int[][] weights = new int[num_vertex][num_vertex];
+		ag.setWeights(weights);
 		
 		for (int i=0; i<information.size();i++){
 			String[] info = information.get(i);

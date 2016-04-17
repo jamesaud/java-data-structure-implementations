@@ -1,0 +1,26 @@
+1. Djikstra: 
+   S: set of vertices for which the shortest path length from s is known.
+   Initialize:
+       S to {},
+       set dist[s] to 0 for the source node,
+       set dist[v] to infinity for all other nodes v
+   Repeat until S contains all vertices connected to s:
+      * find edge e connecting u in S and v in S' (u-v)
+        that minimizes dist[u] + e.weight() [how?]
+      * relax along that edge (update dist[i] for every neighbor of v)
+      * add v to S
+
+     We need to "inverse" Djikstra's algorithem so that we are starting at the outside nodes and work our way inside to the source node.
+     Instead of starting at our source node like in Djikstra's, we would be adding every node that is not our source to the set of unchecked nodes.
+     Then, we would check for each node if it has a relation to the source node. If it does, we would update the distance and remove from the unchecked nodes.
+     After we pass through once, we would pass through again and see if the remaining nodes have a relation with our updated nodes.
+     Repeat until the unchecked nodes is empty.
+
+2.  3->2, 2->4, 2->1, 1->6, 6->5
+
+3. These edges form a tree, as we have all edges in our collection. However, this tree is not necessarily an MST. 
+	For example, we might have a->b and b->c, so we might conclude that a->b->c is the shortest path from a to c.
+	However, this conclusion could be wrong if a->c exists directly at a lower cost - therefor not necessarily an MST.
+
+4. I am unclear on how to access this paper to write an abstract. 
+The "check access" option did not yield anything, and we are surely not expected to purchase it for $35?

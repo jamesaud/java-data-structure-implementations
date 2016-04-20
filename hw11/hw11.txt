@@ -24,3 +24,14 @@
 
 4. I am unclear on how to access this paper to write an abstract. 
 The "check access" option did not yield anything, and we are surely not expected to purchase it for $35?
+-------------------
+In the paper “Functional brain network analysis using minimum spanning trees in Multiple Sclerosis: An MEG source-space study”, the most effective technique used to analyze an MS brain is with Graph theory. Specifically, the MST technique (minimum spanning tree) with a weighted graph is used to model the brain. The edges are the weights of the fluctuation in the neural network, and there is suggestive meaning if the MST fits the criteria of the “strong disorder limit”.
+The three stated reasons of this investigation, according to the paper, are as follows: to detect network changes in MST patients, attempt to draw a correlation to these changes with cognitive dysfunction, and lastly to understand if these changes “correspond to functional brain networks in RRMS” (page 2).
+
+The conclusions drawn from the analysis suggest a relation between cognitive performance and the MST model of the brain. It is suggestive that MST can be used as a tool for analyses of MS patients – the conclusion suggests that “loss of hierarchical structure, are related to cognitive performance in MS” (page 1). 
+
+The prior graph methods yielded poorer results, because “they suffer from methodological difficulties when comparing different groups” (page 3). It seems that a variety of factors, including the size of the network, amount of nodes, and amount of edges all are factors that make it difficult to normalize and compare networks. Other methods, like using fixed nodes or weighted graphs, didn’t yield meaningful results. It turns out that the MST of the original graphs formed the best method of analyzing the data, because the MST always has N nodes, therefore allowing direct comparison of the graphs.
+
+It is interesting that an MST is the best measure for brain topology in this case. In fact, it must be suggestive of a certain type of relationship that neural networks express. In MS, the study finds a loss of a hierarchical structure in MS patients. It seems very interesting there is a relationship of a hierarchical structure present in neural networks in the first place, and that the degradation of MST’s in the networks causes neurological disorders.
+
+

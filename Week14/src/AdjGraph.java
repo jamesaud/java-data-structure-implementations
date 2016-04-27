@@ -232,7 +232,7 @@ public class AdjGraph implements Graph {
 		ag.setEdge("b", "c", 4);
 		ag.setEdge("c", "d", 3);
 		ag.setEdge("d", "e", 2);
-	//	ag.setEdge("d", "f", 10);
+		ag.setEdge("d", "f", 10);
 		//ag.setEdge("e", "f", 1);
 		//ag.display();
 		ag.mstPrim();
